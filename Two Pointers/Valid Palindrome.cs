@@ -1,26 +1,27 @@
 
-
 public class Solution
 {
     public bool IsPalindrome(string s)
     {
         int start = 0;
         int end = s.Count() - 1;
-        s = s.ToLower();
-        Console.WriteLine(s);
-        for (int i = 0; i < s.Count(); i++)
+
+        while (start < end)
         {
-            if (!Char.IsLetter(s[start])) { start++; continue; }
-            if (!Char.IsLetter(s[end])) { end--; continue; }
-
-            if ((s[start]) != (s[end]))
+            if (!Char.IsLetterOrDigit(s[start])) { start++; }
+            else if (!Char.IsLetterOrDigit(s[end])) { end--; }
+            else
             {
-                return false;
-            }
-            if (start == end) { break; }
+                if (char.ToLower(s[start]) != char.ToLower(s[end]))
+                {
+                    return false;
+                }
 
-            start++;
-            end--;
+                start++;
+                end--;
+            }
+
+
         }
 
         return true;
