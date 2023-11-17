@@ -1,3 +1,5 @@
 obj
 Arrays and Hashtags.csproj
 bin
+.idea
+.gitignore
