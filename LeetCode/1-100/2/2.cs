@@ -11,6 +11,24 @@
  */
 public class Solution {
     public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
-        
+        var result = new ListNode();
+        var current = result;
+        int carry = 0, sum = 0;
+
+        while (l1 != null || l2 != null || carry == 1) {
+            var v1 = l1 == null ? 0 : l1.val;
+            var v2 = l2 == null ? 0 : l2.val;
+
+            sum = v1 + v2 + carry;
+            carry = sum > 9 ? 1 : 0;
+            sum = sum % 10;
+            current.next = new ListNode(sum);
+
+            current = current.next;
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+        }
+
+        return result.next;
     }
 }
