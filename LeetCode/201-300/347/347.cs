@@ -1,1 +1,5 @@
-Sábado me impediu de fazer.
+public class Solution {
+    public int[] TopKFrequent(int[] nums, int k) {
+        
+    }
+}
