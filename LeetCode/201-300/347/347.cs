@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Internal;
 
@@ -20,30 +21,25 @@ public class Solution {
         // its possible to use the dictionary built in OrderByDescending method...
         // but realistically that would be cheating and an intervewer would ask HOW it works.
         
-        // The sorting algorith would be something similar to enumerating the dictionary/Hashset
-        // push numbers if theres an empty space, otherwise CHECK the final list to see where to put the incoming number.
-        // PiorityQueue from C# could do it easily but i want to showcase the code working.
+        // The PriorityQueue sorts our array by making a heap (a tree of the elements) giving eachone a "priority" (deph inside the tree)
+        // we simply insert content and remove if its size is above K, making so that only the highest values are kept in storage.
 
-        int biggestCount = 0; // help out on setting the number
-        int lowestCount = 0; // help out on skipping numbers that dont really matter
-        for (int keyIndex = 0; keyIndex < elementsFrequency.Keys.Count; keyIndex++ ) {
-            int currentNumber = elementsFrequency.Keys[keyIndex];
-            int currentCount = elementsFrequency[currentNumber];
-            
-            
+        var Queue = new PriorityQueue<int,int>();
+        foreach(var key in elementsFrequency.Keys) {
+            Queue.Enqueue(key, elementsFrequency[key]);
+            if (Queue.Count > k) Queue.Dequeue(); // we make sure the queue is aways of size K (if possible)
+        }
+        // and then we transform it into an array since thats our data type.
+        // we insert into it in REVERSE ORDER because the heap stores from smallest value to highest.
 
+        int index = k;
+        while (Queue.Count > 0) // we empty the queue
+        {
+            index--;
+            requestedElements[index] = Queue.Dequeue();
             
         }
-
         return requestedElements;
     }
 
 }
-
-/*
-*       # Program Logic
-*   Basically we put all the numbers trough a hashset where the index is the number and the value is how many times it appears on the original array.
-*   I'M using a dictionary because i like the extra abstraction.
-*   
-*   Then we create an array with the 
-*/
