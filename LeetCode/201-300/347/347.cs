@@ -1,0 +1,1 @@
+Sábado me impediu de fazer.
