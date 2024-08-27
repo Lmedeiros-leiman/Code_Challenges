@@ -8,7 +8,6 @@ public class Solution {
     public int[] TopKFrequent(int[] nums, int k) {
         int[] requestedElements = new int[k];
         Dictionary<int,int> elementsFrequency = new();
-
         // fill up the dictionary/hashTable
         foreach(int number in nums) {
             if ( elementsFrequency.ContainsKey(number) ) {
@@ -17,10 +16,10 @@ public class Solution {
                 elementsFrequency.Add(number, 1);
             }
         }
+
         // organize the dictionary values into an decrecending order
         // its possible to use the dictionary built in OrderByDescending method...
         // but realistically that would be cheating and an intervewer would ask HOW it works.
-        
         // The PriorityQueue sorts our array by making a heap (a tree of the elements) giving eachone a "priority" (deph inside the tree)
         // we simply insert content and remove if its size is above K, making so that only the highest values are kept in storage.
 
