@@ -42,16 +42,9 @@ public class Solution {
             
             
             for (int b = 0; b < board.Length; b++) {
-                Console.WriteLine(i/3 * 3 + b / 3);
-                Console.WriteLine(i/3);
-                Console.WriteLine(b/3);
-                
                 if ( board[i/3*3+b/3][i%3*3+b%3] == '.' ) { continue; }
 
-                // X X X
-                // X X X
-                // X X X
-                
+
                 int blocoAtual = (int) board[i/3*3+b/3][i%3*3+b%3] - 48;
                 
                 if (bloco[blocoAtual]) {
