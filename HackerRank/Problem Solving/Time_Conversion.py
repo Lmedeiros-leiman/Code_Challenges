@@ -37,10 +37,9 @@ def timeConversion(s):
 if __name__ == '__main__':
     print(timeConversion("12:05:45AM"))
     pass
-    #
-    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    #s = input()
-    #result = timeConversion(s)
-    #fptr.write(result + '\n')
-    #fptr.close()
-   #
+    
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    s = input()
+    result = timeConversion(s)
+    fptr.write(result + '\n')
+    fptr.close()
